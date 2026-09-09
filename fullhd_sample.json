@@ -1,0 +1,84 @@
+{
+  "name": "Sinemakolik",
+  "baseUrl": "https://sinemakolik.com",
+  "catalogUrl": "/",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Mobile Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml",
+    "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+  },
+  "list": {
+    "url": "/arama/?s={query}",
+    "item": "main .content .lists .move_k",
+    "title": {
+      "selector": ".title h2",
+      "mode": "text"
+    },
+    "href": {
+      "selector": "a",
+      "mode": "attr",
+      "attrs": ["href"]
+    },
+    "poster": {
+      "selector": "img",
+      "mode": "attr",
+      "attrs": ["data-src", "srcset", "src"]
+    }
+  },
+  "detail": {
+    "title": {
+      "selector": ".video_info .b_title h2",
+      "mode": "text"
+    },
+    "poster": {
+      "selector": ".video_info .image img",
+      "mode": "attr",
+      "attrs": ["data-src", "srcset", "src"]
+    },
+    "overview": {
+      "selector": ".video_info .detail .desc",
+      "mode": "text"
+    },
+    "rating": {
+      "selector": "#sitepuan",
+      "mode": "text"
+    },
+    "director": {
+      "selector": ".video_info .detail [itemprop=\"director\"] p",
+      "mode": "text"
+    }
+  },
+  "resolver": {
+    "steps": [
+      {
+        "type": "regex",
+        "source": "html",
+        "pattern": "pdata\\['prt_0'\\]\\s*=\\s*'([^']+)'",
+        "group": 1,
+        "saveAs": "playerBase64"
+      },
+      {
+        "type": "base64",
+        "mode": "sinemakolik",
+        "source": "playerBase64",
+        "saveAs": "playerHtml"
+      },
+      {
+        "type": "iframe",
+        "source": "playerHtml",
+        "saveAs": "embedUrl"
+      },
+      {
+        "type": "get",
+        "url": "{embedUrl}",
+        "referer": "{detailUrl}",
+        "saveAs": "embedHtml"
+      },
+      {
+        "type": "findM3u",
+        "source": "embedHtml",
+        "name": "Vidmixi HLS"
+      }
+    ]
+  }
+}
