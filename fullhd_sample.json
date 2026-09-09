@@ -1,183 +1,156 @@
 {
   "schemaVersion": 1,
-  "id": "setfilmizle",
+  "id": "fullhdfilmizle",
   "version": 1,
   "enabled": true,
-  "name": "SetFilmizle",
-  "baseUrl": "https://www.setfilmizle.ltd",
-  "catalogUrl": "/film/",
+  "name": "FullHDFilmizle",
+  "baseUrl": "https://fullhdfilmizle.now",
+  "catalogUrl": "/",
+
   "topTabs": [
     "Filmler",
+    "Diziler",
     "Aksiyon",
     "Dram",
-    "Komedi",
-    "Korku"
+    "Komedi"
   ],
+
   "categories": [
     {
-      "title": "Aile",
-      "path": "/tur/aile/film/"
-    },
-    {
       "title": "Aksiyon",
-      "path": "/tur/aksiyon/film/"
-    },
-    {
-      "title": "Animasyon",
-      "path": "/tur/animasyon/film/"
-    },
-    {
-      "title": "Belgesel",
-      "path": "/tur/belgesel/film/"
-    },
-    {
-      "title": "Bilim Kurgu",
-      "path": "/tur/bilim-kurgu/film/"
-    },
-    {
-      "title": "Biyografi",
-      "path": "/tur/biyografi/film/"
-    },
-    {
-      "title": "Dini",
-      "path": "/tur/dini/film/"
+      "path": "/tur/aksiyon"
     },
     {
       "title": "Dram",
-      "path": "/tur/dram/film/"
-    },
-    {
-      "title": "Fantastik",
-      "path": "/tur/fantastik/film/"
-    },
-    {
-      "title": "Gençlik",
-      "path": "/tur/genclik/film/"
+      "path": "/tur/dram"
     },
     {
       "title": "Gerilim",
-      "path": "/tur/gerilim/film/"
-    },
-    {
-      "title": "Gizem",
-      "path": "/tur/gizem/film/"
+      "path": "/tur/gerilim"
     },
     {
       "title": "Komedi",
-      "path": "/tur/komedi/film/"
+      "path": "/tur/komedi"
     },
     {
       "title": "Korku",
-      "path": "/tur/korku/film/"
+      "path": "/tur/korku"
     },
     {
       "title": "Macera",
-      "path": "/tur/macera/film/"
+      "path": "/tur/macera"
     },
     {
-      "title": "Müzik",
-      "path": "/tur/muzik/film/"
+      "title": "Fantastik",
+      "path": "/tur/fantastik"
+    },
+    {
+      "title": "Bilim Kurgu",
+      "path": "/tur/bilim-kurgu"
+    },
+    {
+      "title": "Gizem",
+      "path": "/tur/gizem"
     },
     {
       "title": "Romantik",
-      "path": "/tur/romantik/film/"
-    },
-    {
-      "title": "Spor",
-      "path": "/tur/spor/film/"
+      "path": "/tur/romantik"
     },
     {
       "title": "Suç",
-      "path": "/tur/suc/film/"
+      "path": "/tur/suc"
     },
     {
-      "title": "Tarih",
-      "path": "/tur/tarih/film/"
-    },
-    {
-      "title": "Western",
-      "path": "/tur/western/film/"
+      "title": "Savaş",
+      "path": "/tur/savas"
     }
   ],
+
   "headers": {
-    "User-Agent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Mobile Safari/537.36",
+    "User-Agent": "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Mobile Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
   },
+
   "list": {
-    "url": "/?s={query}",
-    "item": ".fgrid > a.card-link",
+    "url": "/arama?q={query}&page={page}",
+    "item": "article.movie-card",
+
     "title": {
-      "selector": ".card-info .card-ad",
+      "selector": ".film-title",
       "mode": "text"
     },
+
     "href": {
-      "selector": ":self",
+      "selector": "a.mc-link",
       "mode": "attr",
       "attrs": [
         "href"
       ]
     },
+
     "poster": {
-      "selector": ".poster-art img",
+      "selector": "img.mc-afis",
       "mode": "attr",
       "attrs": [
         "data-src",
         "data-original",
-        "data-lazy-src",
         "data-srcset",
         "srcset",
         "src"
       ]
     }
   },
+
   "detail": {
     "title": {
-      "selector": ".fbox-title-tx",
+      "selector": ".film-title-h1",
       "mode": "text"
     },
+
     "poster": {
-      "selector": ".fbox-cover-img",
+      "selector": ".detail-poster img",
       "mode": "attr",
       "attrs": [
-        "data-src",
-        "data-original",
-        "data-lazy-src",
         "src"
       ]
     },
+
     "backdrop": {
-      "selector": ".fplayer-before.player-poster img",
+      "selector": "link[rel=\"preload\"][as=\"image\"]",
       "mode": "attr",
       "attrs": [
-        "data-src",
-        "data-original",
-        "data-lazy-src",
-        "src"
+        "href"
       ]
     },
+
     "overview": {
-      "selector": ".fbox-desc",
+      "selector": ".detail-synopsis",
       "mode": "text"
     },
+
     "year": {
-      "selector": ".fbox-info a[href*=\"/yil/\"]",
+      "selector": ".film-facts a[href^=\"/yil/\"]",
       "mode": "text"
     },
+
     "rating": {
-      "selector": ".imdb-score",
+      "selector": ".ib-score",
       "mode": "text"
     },
+
     "director": {
-      "selector": "a[href*=\"/yonetmen/\"]",
-      "mode": "text"
-    },
-    "language": {
-      "selector": ".fbox-lang",
+      "selector": ".meta-row .mr-value a[href^=\"/yonetmen/\"]",
       "mode": "text"
     }
   },
+
   "resolver": {
-    "steps": []
+    "steps": [
+      {
+        "type": "webview",
+        "url": "{detailUrl}"
+      }
+    ]
   }
 }
