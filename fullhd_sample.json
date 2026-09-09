@@ -1,7 +1,84 @@
 {
+  "schemaVersion": 1,
+  "id": "sinemakolik",
+  "version": 2,
+  "enabled": true,
   "name": "Sinemakolik",
   "baseUrl": "https://sinemakolik.com",
   "catalogUrl": "/",
+  "topTabs": [
+    "Filmler",
+    "Diziler",
+    "Aksiyon",
+    "Dram",
+    "Komedi"
+  ],
+  "categories": [
+    {
+      "title": "Aile",
+      "path": "/aile"
+    },
+    {
+      "title": "Aksiyon",
+      "path": "/aksiyon"
+    },
+    {
+      "title": "Animasyon",
+      "path": "/animasyon"
+    },
+    {
+      "title": "Bilim Kurgu",
+      "path": "/bilim-kurgu"
+    },
+    {
+      "title": "Biyografi",
+      "path": "/biyografi"
+    },
+    {
+      "title": "Dram",
+      "path": "/dram"
+    },
+    {
+      "title": "Fantastik",
+      "path": "/fantastik"
+    },
+    {
+      "title": "Gerilim",
+      "path": "/gerilim"
+    },
+    {
+      "title": "Gizem",
+      "path": "/gizem"
+    },
+    {
+      "title": "Komedi",
+      "path": "/komedi"
+    },
+    {
+      "title": "Korku",
+      "path": "/korku"
+    },
+    {
+      "title": "Macera",
+      "path": "/macera"
+    },
+    {
+      "title": "Romantik",
+      "path": "/romantik"
+    },
+    {
+      "title": "Savaş",
+      "path": "/savas"
+    },
+    {
+      "title": "Suç",
+      "path": "/suc"
+    },
+    {
+      "title": "Tarih",
+      "path": "/tarih"
+    }
+  ],
   "headers": {
     "User-Agent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Mobile Safari/537.36",
     "Accept": "text/html,application/xhtml+xml",
@@ -17,12 +94,18 @@
     "href": {
       "selector": "a",
       "mode": "attr",
-      "attrs": ["href"]
+      "attrs": [
+        "href"
+      ]
     },
     "poster": {
       "selector": "img",
       "mode": "attr",
-      "attrs": ["data-src", "srcset", "src"]
+      "attrs": [
+        "data-src",
+        "srcset",
+        "src"
+      ]
     }
   },
   "detail": {
@@ -33,7 +116,11 @@
     "poster": {
       "selector": ".video_info .image img",
       "mode": "attr",
-      "attrs": ["data-src", "srcset", "src"]
+      "attrs": [
+        "data-src",
+        "srcset",
+        "src"
+      ]
     },
     "overview": {
       "selector": ".video_info .detail .desc",
