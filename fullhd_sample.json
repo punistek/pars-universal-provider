@@ -1,108 +1,131 @@
 {
   "schemaVersion": 1,
-  "id": "sinemakolik",
-  "version": 2,
+  "id": "setfilmizle",
+  "version": 1,
   "enabled": true,
-  "name": "Sinemakolik",
-  "baseUrl": "https://sinemakolik.com",
-  "catalogUrl": "/",
+  "name": "SetFilmizle",
+  "baseUrl": "https://www.setfilmizle.ltd",
+  "catalogUrl": "/film/",
   "topTabs": [
     "Filmler",
-    "Diziler",
     "Aksiyon",
     "Dram",
-    "Komedi"
+    "Komedi",
+    "Korku"
   ],
   "categories": [
     {
       "title": "Aile",
-      "path": "/aile"
+      "path": "/tur/aile/film/"
     },
     {
       "title": "Aksiyon",
-      "path": "/aksiyon"
+      "path": "/tur/aksiyon/film/"
     },
     {
       "title": "Animasyon",
-      "path": "/animasyon"
+      "path": "/tur/animasyon/film/"
+    },
+    {
+      "title": "Belgesel",
+      "path": "/tur/belgesel/film/"
     },
     {
       "title": "Bilim Kurgu",
-      "path": "/bilim-kurgu"
+      "path": "/tur/bilim-kurgu/film/"
     },
     {
       "title": "Biyografi",
-      "path": "/biyografi"
+      "path": "/tur/biyografi/film/"
+    },
+    {
+      "title": "Dini",
+      "path": "/tur/dini/film/"
     },
     {
       "title": "Dram",
-      "path": "/dram"
+      "path": "/tur/dram/film/"
     },
     {
       "title": "Fantastik",
-      "path": "/fantastik"
+      "path": "/tur/fantastik/film/"
+    },
+    {
+      "title": "Gençlik",
+      "path": "/tur/genclik/film/"
     },
     {
       "title": "Gerilim",
-      "path": "/gerilim"
+      "path": "/tur/gerilim/film/"
     },
     {
       "title": "Gizem",
-      "path": "/gizem"
+      "path": "/tur/gizem/film/"
     },
     {
       "title": "Komedi",
-      "path": "/komedi"
+      "path": "/tur/komedi/film/"
     },
     {
       "title": "Korku",
-      "path": "/korku"
+      "path": "/tur/korku/film/"
     },
     {
       "title": "Macera",
-      "path": "/macera"
+      "path": "/tur/macera/film/"
+    },
+    {
+      "title": "Müzik",
+      "path": "/tur/muzik/film/"
     },
     {
       "title": "Romantik",
-      "path": "/romantik"
+      "path": "/tur/romantik/film/"
     },
     {
-      "title": "Savaş",
-      "path": "/savas"
+      "title": "Spor",
+      "path": "/tur/spor/film/"
     },
     {
       "title": "Suç",
-      "path": "/suc"
+      "path": "/tur/suc/film/"
     },
     {
       "title": "Tarih",
-      "path": "/tarih"
+      "path": "/tur/tarih/film/"
+    },
+    {
+      "title": "Western",
+      "path": "/tur/western/film/"
     }
   ],
   "headers": {
     "User-Agent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Mobile Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
   },
   "list": {
-    "url": "/arama/?s={query}",
-    "item": "main .content .lists .move_k",
+    "url": "/?s={query}",
+    "item": ".fgrid > a.card-link",
     "title": {
-      "selector": ".title h2",
+      "selector": ".card-info .card-ad",
       "mode": "text"
     },
     "href": {
-      "selector": "a",
+      "selector": ":self",
       "mode": "attr",
       "attrs": [
         "href"
       ]
     },
     "poster": {
-      "selector": "img",
+      "selector": ".poster-art img",
       "mode": "attr",
       "attrs": [
         "data-src",
+        "data-original",
+        "data-lazy-src",
+        "data-srcset",
         "srcset",
         "src"
       ]
@@ -110,62 +133,51 @@
   },
   "detail": {
     "title": {
-      "selector": ".video_info .b_title h2",
+      "selector": ".fbox-title-tx",
       "mode": "text"
     },
     "poster": {
-      "selector": ".video_info .image img",
+      "selector": ".fbox-cover-img",
       "mode": "attr",
       "attrs": [
         "data-src",
-        "srcset",
+        "data-original",
+        "data-lazy-src",
+        "src"
+      ]
+    },
+    "backdrop": {
+      "selector": ".fplayer-before.player-poster img",
+      "mode": "attr",
+      "attrs": [
+        "data-src",
+        "data-original",
+        "data-lazy-src",
         "src"
       ]
     },
     "overview": {
-      "selector": ".video_info .detail .desc",
+      "selector": ".fbox-desc",
+      "mode": "text"
+    },
+    "year": {
+      "selector": ".fbox-info a[href*=\"/yil/\"]",
       "mode": "text"
     },
     "rating": {
-      "selector": "#sitepuan",
+      "selector": ".imdb-score",
       "mode": "text"
     },
     "director": {
-      "selector": ".video_info .detail [itemprop=\"director\"] p",
+      "selector": "a[href*=\"/yonetmen/\"]",
+      "mode": "text"
+    },
+    "language": {
+      "selector": ".fbox-lang",
       "mode": "text"
     }
   },
   "resolver": {
-    "steps": [
-      {
-        "type": "regex",
-        "source": "html",
-        "pattern": "pdata\\['prt_0'\\]\\s*=\\s*'([^']+)'",
-        "group": 1,
-        "saveAs": "playerBase64"
-      },
-      {
-        "type": "base64",
-        "mode": "sinemakolik",
-        "source": "playerBase64",
-        "saveAs": "playerHtml"
-      },
-      {
-        "type": "iframe",
-        "source": "playerHtml",
-        "saveAs": "embedUrl"
-      },
-      {
-        "type": "get",
-        "url": "{embedUrl}",
-        "referer": "{detailUrl}",
-        "saveAs": "embedHtml"
-      },
-      {
-        "type": "findM3u",
-        "source": "embedHtml",
-        "name": "Vidmixi HLS"
-      }
-    ]
+    "steps": []
   }
 }
