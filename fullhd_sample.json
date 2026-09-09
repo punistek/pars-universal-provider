@@ -1,182 +1,170 @@
 {
   "schemaVersion": 1,
-  "id": "fullhdfilmizlesene",
-  "version": 1,
+  "id": "sinemakolik",
+  "version": 2,
   "enabled": true,
-  "name": "FullHDFilmizlesene",
-  "baseUrl": "https://www.fullhdfilmizlesene.now",
+  "name": "Sinemakolik",
+  "baseUrl": "https://sinemakolik.com",
   "catalogUrl": "/",
   "topTabs": [
     "Filmler",
+    "Diziler",
     "Aksiyon",
     "Dram",
-    "Komedi",
-    "Korku"
+    "Komedi"
   ],
   "categories": [
     {
       "title": "Aile",
-      "path": "/filmizle/aile-filmleri"
+      "path": "/aile"
     },
     {
       "title": "Aksiyon",
-      "path": "/filmizle/aksiyon-filmleri"
+      "path": "/aksiyon"
     },
     {
       "title": "Animasyon",
-      "path": "/filmizle/animasyon-filmleri"
-    },
-    {
-      "title": "Belgesel",
-      "path": "/filmizle/belgesel-filmleri"
+      "path": "/animasyon"
     },
     {
       "title": "Bilim Kurgu",
-      "path": "/filmizle/bilim-kurgu-filmleri"
+      "path": "/bilim-kurgu"
     },
     {
-      "title": "Blu Ray",
-      "path": "/filmizle/blu-ray-filmler"
-    },
-    {
-      "title": "Çizgi Film",
-      "path": "/filmizle/cizgi-filmler"
+      "title": "Biyografi",
+      "path": "/biyografi"
     },
     {
       "title": "Dram",
-      "path": "/filmizle/dram-filmleri"
+      "path": "/dram"
     },
     {
       "title": "Fantastik",
-      "path": "/filmizle/fantastik-filmler"
+      "path": "/fantastik"
     },
     {
       "title": "Gerilim",
-      "path": "/filmizle/gerilim-filmleri"
+      "path": "/gerilim"
     },
     {
       "title": "Gizem",
-      "path": "/filmizle/gizem-filmleri"
-    },
-    {
-      "title": "Hint",
-      "path": "/filmizle/hint-filmleri"
+      "path": "/gizem"
     },
     {
       "title": "Komedi",
-      "path": "/filmizle/komedi-filmleri"
+      "path": "/komedi"
     },
     {
       "title": "Korku",
-      "path": "/filmizle/korku-filmleri"
+      "path": "/korku"
     },
     {
       "title": "Macera",
-      "path": "/filmizle/macera-filmleri"
-    },
-    {
-      "title": "Müzikal",
-      "path": "/filmizle/muzikal-filmler"
-    },
-    {
-      "title": "Polisiye",
-      "path": "/filmizle/polisiye-filmleri"
-    },
-    {
-      "title": "Psikolojik",
-      "path": "/filmizle/psikolojik-filmler"
+      "path": "/macera"
     },
     {
       "title": "Romantik",
-      "path": "/filmizle/romantik-filmler"
+      "path": "/romantik"
     },
     {
       "title": "Savaş",
-      "path": "/filmizle/savas-filmleri"
+      "path": "/savas"
     },
     {
       "title": "Suç",
-      "path": "/filmizle/suc-filmleri"
+      "path": "/suc"
     },
     {
       "title": "Tarih",
-      "path": "/filmizle/tarih-filmleri"
-    },
-    {
-      "title": "Western",
-      "path": "/filmizle/western-filmler"
-    },
-    {
-      "title": "Yerli",
-      "path": "/filmizle/yerli-filmler"
+      "path": "/tarih"
     }
   ],
   "headers": {
     "User-Agent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Mobile Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept": "text/html,application/xhtml+xml",
     "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
   },
   "list": {
     "url": "/arama/?s={query}",
-    "item": "li.film, div.film",
+    "item": "main .content .lists .move_k",
     "title": {
-      "selector": ".film-title",
+      "selector": ".title h2",
       "mode": "text"
     },
     "href": {
-      "selector": "a.tt",
+      "selector": "a",
       "mode": "attr",
       "attrs": [
         "href"
       ]
     },
     "poster": {
-      "selector": "picture img",
+      "selector": "img",
       "mode": "attr",
       "attrs": [
-        "data-srcset",
-        "srcset",
         "data-src",
+        "srcset",
         "src"
       ]
     }
   },
   "detail": {
     "title": {
-      "selector": "h1 a",
+      "selector": ".video_info .b_title h2",
       "mode": "text"
     },
     "poster": {
-      "selector": "img.ic-afis",
+      "selector": ".video_info .image img",
       "mode": "attr",
       "attrs": [
-        "data-srcset",
-        "srcset",
         "data-src",
+        "srcset",
         "src"
       ]
     },
-    "backdrop": {
-      "selector": "meta[name=\"twitter:image\"]",
-      "mode": "attr",
-      "attrs": [
-        "content"
-      ]
-    },
     "overview": {
-      "selector": ".ozet-ic p",
+      "selector": ".video_info .detail .desc",
       "mode": "text"
     },
     "rating": {
-      "selector": ".imdb span",
+      "selector": "#sitepuan",
+      "mode": "text"
+    },
+    "director": {
+      "selector": ".video_info .detail [itemprop=\"director\"] p",
       "mode": "text"
     }
   },
   "resolver": {
     "steps": [
       {
-        "type": "webview",
-        "url": "{detailUrl}"
+        "type": "regex",
+        "source": "html",
+        "pattern": "pdata\\['prt_0'\\]\\s*=\\s*'([^']+)'",
+        "group": 1,
+        "saveAs": "playerBase64"
+      },
+      {
+        "type": "base64",
+        "mode": "sinemakolik",
+        "source": "playerBase64",
+        "saveAs": "playerHtml"
+      },
+      {
+        "type": "iframe",
+        "source": "playerHtml",
+        "saveAs": "embedUrl"
+      },
+      {
+        "type": "get",
+        "url": "{embedUrl}",
+        "referer": "{detailUrl}",
+        "saveAs": "embedHtml"
+      },
+      {
+        "type": "findM3u",
+        "source": "embedHtml",
+        "name": "Vidmixi HLS"
       }
     ]
   }
