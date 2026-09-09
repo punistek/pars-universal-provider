@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "setfilmizle",
-  "version": 1,
+  "version": 2,
   "enabled": true,
   "name": "SetFilmizle",
   "baseUrl": "https://www.setfilmizle.ltd",
@@ -15,96 +15,80 @@
   ],
   "categories": [
     {
-      "title": "Aile",
-      "path": "/tur/aile/film/"
-    },
-    {
       "title": "Aksiyon",
-      "path": "/tur/aksiyon/film/"
-    },
-    {
-      "title": "Animasyon",
-      "path": "/tur/animasyon/film/"
-    },
-    {
-      "title": "Belgesel",
-      "path": "/tur/belgesel/film/"
-    },
-    {
-      "title": "Bilim Kurgu",
-      "path": "/tur/bilim-kurgu/film/"
-    },
-    {
-      "title": "Biyografi",
-      "path": "/tur/biyografi/film/"
-    },
-    {
-      "title": "Dini",
-      "path": "/tur/dini/film/"
+      "path": "/tur/aksiyon/"
     },
     {
       "title": "Dram",
-      "path": "/tur/dram/film/"
-    },
-    {
-      "title": "Fantastik",
-      "path": "/tur/fantastik/film/"
-    },
-    {
-      "title": "Gençlik",
-      "path": "/tur/genclik/film/"
+      "path": "/tur/dram/"
     },
     {
       "title": "Gerilim",
-      "path": "/tur/gerilim/film/"
-    },
-    {
-      "title": "Gizem",
-      "path": "/tur/gizem/film/"
+      "path": "/tur/gerilim/"
     },
     {
       "title": "Komedi",
-      "path": "/tur/komedi/film/"
+      "path": "/tur/komedi/"
     },
     {
       "title": "Korku",
-      "path": "/tur/korku/film/"
+      "path": "/tur/korku/"
     },
     {
       "title": "Macera",
-      "path": "/tur/macera/film/"
+      "path": "/tur/macera/"
     },
     {
-      "title": "Mini Dizi",
-      "path": "/tur/mini-dizi/film/"
+      "title": "Fantastik",
+      "path": "/tur/fantastik/"
     },
     {
-      "title": "Müzik",
-      "path": "/tur/muzik/film/"
+      "title": "Bilim Kurgu",
+      "path": "/tur/bilim-kurgu/"
     },
     {
-      "title": "Program",
-      "path": "/tur/program/film/"
+      "title": "Gizem",
+      "path": "/tur/gizem/"
     },
     {
       "title": "Romantik",
-      "path": "/tur/romantik/film/"
-    },
-    {
-      "title": "Spor",
-      "path": "/tur/spor/film/"
+      "path": "/tur/romantik/"
     },
     {
       "title": "Suç",
-      "path": "/tur/suc/film/"
+      "path": "/tur/suc/"
+    },
+    {
+      "title": "Animasyon",
+      "path": "/tur/animasyon/"
+    },
+    {
+      "title": "Aile",
+      "path": "/tur/aile/"
+    },
+    {
+      "title": "Belgesel",
+      "path": "/tur/belgesel/"
+    },
+    {
+      "title": "Biyografi",
+      "path": "/tur/biyografi/"
+    },
+    {
+      "title": "Müzik",
+      "path": "/tur/muzik/"
+    },
+    {
+      "title": "Spor",
+      "path": "/tur/spor/"
     },
     {
       "title": "Tarih",
-      "path": "/tur/tarih/film/"
+      "path": "/tur/tarih/"
     },
     {
       "title": "Western",
-      "path": "/tur/western/film/"
+      "path": "/tur/western/"
     }
   ],
   "headers": {
@@ -114,37 +98,43 @@
   },
   "list": {
     "url": "/?s={query}",
-    "item": "a.card-link",
+    "item": ".fgrid a.card-link",
     "title": {
-      "selector": ".card-ad",
+      "selector": ".card-info .card-ad",
       "mode": "text"
     },
     "href": {
-      "selector": "a.card-link",
+      "selector": "",
       "mode": "attr",
       "attrs": [
         "href"
       ]
     },
     "poster": {
-      "selector": ".poster-art img",
+      "selector": ".poster .poster-art img",
       "mode": "attr",
       "attrs": [
         "data-src",
         "data-original",
-        "data-srcset",
-        "srcset",
         "src"
       ]
     }
   },
   "detail": {
     "title": {
-      "selector": ".fbox-title-tx",
+      "selector": ".fbox-title .fbox-title-tx",
       "mode": "text"
     },
     "poster": {
-      "selector": ".fbox-cover-img",
+      "selector": ".fbox-cover .fbox-cover-img",
+      "mode": "attr",
+      "attrs": [
+        "data-src",
+        "src"
+      ]
+    },
+    "backdrop": {
+      "selector": ".fplayer-before.player-poster img",
       "mode": "attr",
       "attrs": [
         "data-src",
@@ -152,15 +142,19 @@
       ]
     },
     "overview": {
-      "selector": ".fbox-desc p",
+      "selector": ".fbox-desc",
+      "mode": "text"
+    },
+    "year": {
+      "selector": ".fbox-info a[href*=\"/yil/\"]",
       "mode": "text"
     },
     "rating": {
-      "selector": ".imdb-score",
+      "selector": ".fbox-info .imdb-score",
       "mode": "text"
     },
     "director": {
-      "selector": ".fbox-kadro a[href*=\"/yonetmen/\"] .fk-t b",
+      "selector": "a[href*=\"/yonetmen/\"]",
       "mode": "text"
     }
   },
