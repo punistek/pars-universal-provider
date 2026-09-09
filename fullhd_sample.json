@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "fullhdfilmizlesene",
-  "version": 2,
+  "id": "setfilmizle",
+  "version": 1,
   "enabled": true,
-  "name": "FullHDFilmizlesene",
-  "baseUrl": "https://www.fullhdfilmizlesene.now",
-  "catalogUrl": "/",
+  "name": "SetFilmizle",
+  "baseUrl": "https://www.setfilmizle.ltd",
+  "catalogUrl": "/film/",
   "topTabs": [
     "Filmler",
     "Aksiyon",
@@ -16,99 +16,99 @@
   "categories": [
     {
       "title": "Aile",
-      "path": "/filmizle/aile-filmleri"
+      "path": "/tur/aile/film/"
     },
     {
       "title": "Aksiyon",
-      "path": "/filmizle/aksiyon-filmleri"
+      "path": "/tur/aksiyon/film/"
     },
     {
       "title": "Animasyon",
-      "path": "/filmizle/animasyon-filmleri"
+      "path": "/tur/animasyon/film/"
     },
     {
       "title": "Belgesel",
-      "path": "/filmizle/belgesel-filmleri"
+      "path": "/tur/belgesel/film/"
     },
     {
-      "title": "Bilim Kurgu",
-      "path": "/filmizle/bilim-kurgu-filmleri"
+      "title": "Bilim-Kurgu",
+      "path": "/tur/bilim-kurgu/film/"
     },
     {
-      "title": "Blu Ray",
-      "path": "/filmizle/blu-ray-filmler"
+      "title": "Biyografi",
+      "path": "/tur/biyografi/film/"
     },
     {
-      "title": "Çizgi Film",
-      "path": "/filmizle/cizgi-filmler"
+      "title": "Dini",
+      "path": "/tur/dini/film/"
     },
     {
       "title": "Dram",
-      "path": "/filmizle/dram-filmleri"
+      "path": "/tur/dram/film/"
     },
     {
       "title": "Fantastik",
-      "path": "/filmizle/fantastik-filmler"
+      "path": "/tur/fantastik/film/"
+    },
+    {
+      "title": "Gençlik",
+      "path": "/tur/genclik/film/"
     },
     {
       "title": "Gerilim",
-      "path": "/filmizle/gerilim-filmleri"
+      "path": "/tur/gerilim/film/"
     },
     {
       "title": "Gizem",
-      "path": "/filmizle/gizem-filmleri"
-    },
-    {
-      "title": "Hint",
-      "path": "/filmizle/hint-filmleri"
+      "path": "/tur/gizem/film/"
     },
     {
       "title": "Komedi",
-      "path": "/filmizle/komedi-filmleri"
+      "path": "/tur/komedi/film/"
     },
     {
       "title": "Korku",
-      "path": "/filmizle/korku-filmleri"
+      "path": "/tur/korku/film/"
     },
     {
       "title": "Macera",
-      "path": "/filmizle/macera-filmleri"
+      "path": "/tur/macera/film/"
     },
     {
-      "title": "Müzikal",
-      "path": "/filmizle/muzikal-filmler"
+      "title": "Mini Dizi",
+      "path": "/tur/mini-dizi/film/"
     },
     {
-      "title": "Polisiye",
-      "path": "/filmizle/polisiye-filmleri"
+      "title": "Müzik",
+      "path": "/tur/muzik/film/"
     },
     {
-      "title": "Psikolojik",
-      "path": "/filmizle/psikolojik-filmler"
+      "title": "Program",
+      "path": "/tur/program/film/"
     },
     {
       "title": "Romantik",
-      "path": "/filmizle/romantik-filmler"
+      "path": "/tur/romantik/film/"
     },
     {
       "title": "Savaş",
-      "path": "/filmizle/savas-filmleri"
+      "path": "/tur/savas/film/"
+    },
+    {
+      "title": "Spor",
+      "path": "/tur/spor/film/"
     },
     {
       "title": "Suç",
-      "path": "/filmizle/suc-filmleri"
+      "path": "/tur/suc/film/"
     },
     {
       "title": "Tarih",
-      "path": "/filmizle/tarih-filmleri"
+      "path": "/tur/tarih/film/"
     },
     {
       "title": "Western",
-      "path": "/filmizle/western-filmler"
-    },
-    {
-      "title": "Yerli",
-      "path": "/filmizle/yerli-filmler"
+      "path": "/tur/western/film/"
     }
   ],
   "headers": {
@@ -117,25 +117,23 @@
     "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
   },
   "list": {
-    "url": "/arama/?s={query}",
-    "item": "li.film, div.film",
+    "url": "/?s={query}",
+    "item": "a.card-link",
     "title": {
-      "selector": ".film-title",
+      "selector": ".card-ad",
       "mode": "text"
     },
     "href": {
-      "selector": "a.tt",
+      "selector": "a.card-link",
       "mode": "attr",
       "attrs": [
         "href"
       ]
     },
     "poster": {
-      "selector": "picture img",
+      "selector": ".poster-art img",
       "mode": "attr",
       "attrs": [
-        "data-srcset",
-        "srcset",
         "data-src",
         "src"
       ]
@@ -143,59 +141,28 @@
   },
   "detail": {
     "title": {
-      "selector": "h1 a",
+      "selector": ".fbox-title-tx",
       "mode": "text"
     },
     "poster": {
-      "selector": "img.ic-afis",
+      "selector": ".fbox-cover-img",
       "mode": "attr",
       "attrs": [
-        "data-srcset",
-        "srcset",
         "data-src",
         "src"
       ]
     },
-    "backdrop": {
-      "selector": "meta[name=\"twitter:image\"]",
-      "mode": "attr",
-      "attrs": [
-        "content"
-      ]
-    },
     "overview": {
-      "selector": ".ozet-ic p",
+      "selector": ".fbox-desc p",
       "mode": "text"
     },
     "rating": {
-      "selector": ".imdb span",
+      "selector": ".imdb-score",
+      "mode": "text"
+    },
+    "director": {
+      "selector": ".fbox-kadro .is-kunye .fk-t b",
       "mode": "text"
     }
-  },
-  "resolver": {
-    "steps": [
-      {
-        "type": "regex",
-        "source": "html",
-        "pattern": "var\\s+scx\\s*=\\s*\\{.*?\"sx\"\\s*:\\s*\\{.*?\"t\"\\s*:\\s*\\[\\s*\"([^\"]+)\"",
-        "group": 1,
-        "saveAs": "rapidEncoded"
-      },
-      {
-        "type": "rot13",
-        "source": "rapidEncoded",
-        "saveAs": "rapidBase64"
-      },
-      {
-        "type": "base64",
-        "source": "rapidBase64",
-        "saveAs": "rapidvidUrl"
-      },
-      {
-        "type": "webview",
-        "url": "{rapidvidUrl}",
-        "name": "RapidVid"
-      }
-    ]
   }
 }
