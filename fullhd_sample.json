@@ -1,7 +1,141 @@
 {
- "name":"FullHD Filmizlesene","baseUrl":"https://www.fullhdfilmizlesene.now","catalogUrl":"/",
- "headers":{"User-Agent":"Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/152 Mobile Safari/537.36","Accept":"text/html,application/xhtml+xml"},
- "list":{"url":"/?s={query}&page={page}","item":"li.film","title":{"selector":".film-title","mode":"text"},"href":{"selector":"a.tt","mode":"attr","attrs":["href"]},"poster":{"selector":"img.afis","mode":"attr","attrs":["data-src","data-original","data-srcset","srcset","src"]}},
- "detail":{"title":{"selector":"h1","mode":"text"},"poster":{"selector":"img.ic-afis","mode":"attr","attrs":["data-src","data-original","data-srcset","srcset","src"]},"overview":{"selector":".film-ozeti","mode":"text"},"duration":{"selector":".sure","mode":"text"},"rating":{"selector":".imdb-ic span","mode":"text"}},
- "resolver":{"steps":[]}
+  "schemaVersion": 1,
+  "id": "fullhdfilmizle",
+  "version": 1,
+  "enabled": true,
+  "name": "FullHDFilmizle",
+  "baseUrl": "https://fullhdfilmizle.now",
+  "catalogUrl": "/",
+  "topTabs": [
+    "Filmler",
+    "Diziler",
+    "Aksiyon",
+    "Dram",
+    "Komedi"
+  ],
+  "categories": [
+    {
+      "title": "Aksiyon",
+      "path": "/tur/aksiyon"
+    },
+    {
+      "title": "Dram",
+      "path": "/tur/dram"
+    },
+    {
+      "title": "Gerilim",
+      "path": "/tur/gerilim"
+    },
+    {
+      "title": "Komedi",
+      "path": "/tur/komedi"
+    },
+    {
+      "title": "Korku",
+      "path": "/tur/korku"
+    },
+    {
+      "title": "Macera",
+      "path": "/tur/macera"
+    },
+    {
+      "title": "Fantastik",
+      "path": "/tur/fantastik"
+    },
+    {
+      "title": "Bilim Kurgu",
+      "path": "/tur/bilim-kurgu"
+    },
+    {
+      "title": "Gizem",
+      "path": "/tur/gizem"
+    },
+    {
+      "title": "Romantik",
+      "path": "/tur/romantik"
+    },
+    {
+      "title": "Suç",
+      "path": "/tur/suc"
+    },
+    {
+      "title": "Savaş",
+      "path": "/tur/savas"
+    }
+  ],
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Mobile Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7"
+  },
+  "list": {
+    "url": "/arama?q={query}&page={page}",
+    "item": "article.movie-card",
+    "title": {
+      "selector": ".film-title",
+      "mode": "text"
+    },
+    "href": {
+      "selector": "a.mc-link",
+      "mode": "attr",
+      "attrs": [
+        "href"
+      ]
+    },
+    "poster": {
+      "selector": "img.mc-afis",
+      "mode": "attr",
+      "attrs": [
+        "data-src",
+        "data-original",
+        "data-srcset",
+        "srcset",
+        "src"
+      ]
+    }
+  },
+  "detail": {
+    "title": {
+      "selector": ".film-title-h1",
+      "mode": "text"
+    },
+    "poster": {
+      "selector": ".detail-poster img",
+      "mode": "attr",
+      "attrs": [
+        "src"
+      ]
+    },
+    "backdrop": {
+      "selector": "link[rel=\"preload\"][as=\"image\"]",
+      "mode": "attr",
+      "attrs": [
+        "href"
+      ]
+    },
+    "overview": {
+      "selector": ".detail-synopsis",
+      "mode": "text"
+    },
+    "year": {
+      "selector": ".film-facts a[href^=\"/yil/\"]",
+      "mode": "text"
+    },
+    "rating": {
+      "selector": ".ib-score",
+      "mode": "text"
+    },
+    "director": {
+      "selector": ".meta-row .mr-value a[href^=\"/yonetmen/\"]",
+      "mode": "text"
+    }
+  },
+  "resolver": {
+    "steps": [
+      {
+        "type": "webview",
+        "url": "{detailUrl}"
+      }
+    ]
+  }
 }
