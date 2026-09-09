@@ -31,7 +31,7 @@
       "path": "/tur/belgesel/film/"
     },
     {
-      "title": "Bilim-Kurgu",
+      "title": "Bilim Kurgu",
       "path": "/tur/bilim-kurgu/film/"
     },
     {
@@ -91,10 +91,6 @@
       "path": "/tur/romantik/film/"
     },
     {
-      "title": "Savaş",
-      "path": "/tur/savas/film/"
-    },
-    {
       "title": "Spor",
       "path": "/tur/spor/film/"
     },
@@ -135,6 +131,9 @@
       "mode": "attr",
       "attrs": [
         "data-src",
+        "data-original",
+        "data-srcset",
+        "srcset",
         "src"
       ]
     }
@@ -161,8 +160,11 @@
       "mode": "text"
     },
     "director": {
-      "selector": ".fbox-kadro .is-kunye .fk-t b",
+      "selector": ".fbox-kadro a[href*=\"/yonetmen/\"] .fk-t b",
       "mode": "text"
     }
+  },
+  "resolver": {
+    "steps": []
   }
 }
